@@ -3,10 +3,12 @@ import GroupBar from './groupedBar'
 import Line from './Line'
 import SelectedOptions from '../SelectedOptions'
 import Error from '../Error'
-import { countryOptions, panelOptions } from '../../utils/dates'
+import { countryOptions, panelOptions, API } from '../../utils/dates'
+import { dashboard } from '../../utils/helper'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Grid, Select } from "semantic-ui-react";
+import axios from 'axios'
 
 
 const Index = () => {
@@ -14,6 +16,26 @@ const Index = () => {
     // State
     const [ company, setCompany ] = useState('')
     const [ panel, setPanel ] = useState({})
+
+    // Effect
+    useEffect(() => {
+        const getDates = async () => {
+            if ( company != '' && Object.keys(panel).length != 0 ) {
+                const dashboardInstance = axios.create({
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Authorization': API.token
+                    }
+                })
+                const url = dashboard(panel.key)
+                const response = await dashboardInstance.get(url)
+
+                console.log('Response', response);
+            }
+        }
+
+        getDates();
+    }, [ company, panel ])
 
     // Handle Change
     const onHandleChangeCompany = (e, { options }) => {
