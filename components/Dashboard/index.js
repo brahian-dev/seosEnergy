@@ -28,7 +28,12 @@ const Index = () => {
                     }
                 })
                 const url = dashboard(panel.key)
-                const response = await dashboardInstance.get(url)
+                const response = await dashboardInstance.get('https://seosenergy.fredyherrera.com.co/app_movil/API/history.php', {
+                    params: {
+                        sensor: "0x0000C47F510354BA",
+                        date: "2021-09-03"
+                    }
+                })
 
                 console.log('Response', response);
             }
