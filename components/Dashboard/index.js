@@ -28,10 +28,15 @@ const Index = () => {
                     }
                 })
                 const url = dashboard(panel.key)
-                const response = await dashboardInstance.get('https://seosenergy.fredyherrera.com.co/app_movil/API/history.php', {
+                const response = await dashboardInstance.post('https://seosenergy.fredyherrera.com.co/app_movil/API/history.php', {
                     params: {
-                        sensor: "0x0000C47F510354BA",
-                        date: "2021-09-03"
+                        function_name: "consult_neurio_history",
+                        parameter: {
+                            sensor: "0x0000C47F510354BA",
+                            date_start: "2021-09-03",
+                            date_end: "2021-09-03",
+                            granularity: "months"
+                        }
                     }
                 })
 

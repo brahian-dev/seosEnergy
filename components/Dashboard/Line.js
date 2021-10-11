@@ -1,7 +1,7 @@
 import { Line } from "react-chartjs-2";
 
 const data = {
-    labels: ['1', '2', '3', '4', '5', '6'],
+    labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
     datasets: [
         {
         label: '# of Votes',
