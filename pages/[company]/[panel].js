@@ -1,13 +1,30 @@
-import { useRouter } from 'next/router'
+import TopMenu from '../../components/TopMenu'
+import Panels from '../../components/Company/Panels/index'
 
-const Company = ({ query }) => {
+import { useRouter } from 'next/router'
+import Head from 'next/head'
+
+const Company = ({ query, data }) => {
     const router = useRouter()
     const { company, panel } = router.query
 
 
     console.log('Query', query);
+    console.log('Data', data);
 
-    return <p>Company: { company } and Panel: { panel }</p>
+    return (
+        <>
+            <Head>
+                <title> Dashboard - { company } </title>
+            </Head>
+            <TopMenu
+                option="Dashboard"
+                urlDashboard={ `/${ company }/${ panel }` }
+                disabled={ false }
+            />
+            <Panels />
+        </>
+    )
 }
 
 export async function getServerSideProps(context) {

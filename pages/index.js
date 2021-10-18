@@ -1,6 +1,6 @@
 import Header from '../components/Header'
 import TopMenu from '../components/TopMenu'
-import Dashboard from '../components/Dashboard/index'
+import Content from '../components/index'
 
 const Index = ({ data }) => {
 
@@ -11,8 +11,9 @@ const Index = ({ data }) => {
       />
       <TopMenu
         option="Dashboard"
+        disabled={ true }
       />
-      <Dashboard />
+      <Content />
     </>
   );
 }

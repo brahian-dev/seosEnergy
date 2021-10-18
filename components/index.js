@@ -1,14 +1,9 @@
-import VerticalBar from './verticalBar'
-import GroupBar from './groupedBar'
-import Line from './Line'
-import SelectedOptions from '../SelectedOptions'
-import Error from '../Error'
-import Loading from '../Loading'
-import { getPanels } from '../../utils/helper'
+import Loading from './Loading'
+import { getPanels } from '../utils/helper'
 
 import { useState } from 'react'
-import { Container, Button, Grid, Segment, Loader } from "semantic-ui-react";
-import Panels from '../Panels'
+import { Container, Button, Grid } from "semantic-ui-react";
+import Panels from './Panels'
 
 const Index = () => {
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Icon, Menu } from 'semantic-ui-react'
 
-const TopMenu = ({ option }) => {
+const TopMenu = ({ option, urlDashboard = '/', disabled }) => {
 
     // State to Menu
     const [ item, setItem ] = useState(option)
@@ -18,7 +18,7 @@ const TopMenu = ({ option }) => {
             <Menu pointing secondary>
                 <Menu.Item
                     name="Dashboard"
-                    redirect="/"
+                    redirect={ urlDashboard }
                     active={ item === 'Dashboard' }
                     onClick={ onHandleClick }
                     link
@@ -32,7 +32,7 @@ const TopMenu = ({ option }) => {
                     active={ item === 'Historial' }
                     onClick={ onHandleClick }
                     link
-                    disabled
+                    disabled={ disabled ? true : false }
                 >
                     <Icon name='history' />
                     Historial
@@ -43,7 +43,7 @@ const TopMenu = ({ option }) => {
                     active={ item === 'Energia' }
                     onClick={ onHandleClick }
                     link
-                    disabled
+                    disabled={ disabled ? true : false }
                 >
                     <Icon name='sun' />
                     Energia
@@ -54,7 +54,7 @@ const TopMenu = ({ option }) => {
                     active={ item === 'Poder' }
                     onClick={ onHandleClick }
                     link
-                    disabled
+                    disabled={ disabled ? true : false }
                 >
                     <Icon name='power' />
                     Poder
