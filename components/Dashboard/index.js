@@ -35,7 +35,7 @@ const Index = () => {
     return (
         <Container>
             <Grid centered columns={2}>
-                <Grid.Column mobile={8} tablet={8} computer={4}>
+                <Grid.Column>
                     <Button
                         size='massive'
                         inverted
