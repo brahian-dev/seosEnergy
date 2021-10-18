@@ -32,6 +32,7 @@ const TopMenu = ({ option }) => {
                     active={ item === 'Historial' }
                     onClick={ onHandleClick }
                     link
+                    disabled
                 >
                     <Icon name='history' />
                     Historial
@@ -42,6 +43,7 @@ const TopMenu = ({ option }) => {
                     active={ item === 'Energia' }
                     onClick={ onHandleClick }
                     link
+                    disabled
                 >
                     <Icon name='sun' />
                     Energia
@@ -52,6 +54,7 @@ const TopMenu = ({ option }) => {
                     active={ item === 'Poder' }
                     onClick={ onHandleClick }
                     link
+                    disabled
                 >
                     <Icon name='power' />
                     Poder

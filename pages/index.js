@@ -2,7 +2,8 @@ import Header from '../components/Header'
 import TopMenu from '../components/TopMenu'
 import Dashboard from '../components/Dashboard/index'
 
-const index = () => {
+const Index = ({ data }) => {
+
   return (
     <>
       <Header
@@ -16,4 +17,4 @@ const index = () => {
   );
 }
 
-export default index;
+export default Index

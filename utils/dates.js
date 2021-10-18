@@ -2,9 +2,65 @@ export const countryOptions = [
     { key: 'neurio', value: 'neurio', text: 'Neurio' }
 ]
 
-export const panelOptions = [
-    { key: '0x0000C47F510354BA', value: '0x0000C47F510354BA', text: 'Anapoima' }
-]
+export const panelsOptions = {
+    neurio: {
+        panels: [
+            {
+                name: 'Anapoima',
+                key: '0x0000C47F510354BA',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            },
+            {
+                name: 'Other',
+                key: 'Here Key',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            },
+            {
+                name: 'Other',
+                key: 'Here Key Other Panel',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            }
+        ]
+    },
+    growant: {
+        panels: [
+            {
+                name: 'Other',
+                key: 'Other One',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            },
+            {
+                name: 'Other',
+                key: 'Other Two',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            },
+            {
+                name: 'Other',
+                key: 'Other Three',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            }
+        ]
+    },
+    other: {
+        panels: [
+            {
+                name: 'Other',
+                key: 'Other One',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            },
+            {
+                name: 'Other',
+                key: 'Other Two',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            },
+            {
+                name: 'Other',
+                key: 'Other Three',
+                description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            }
+        ]
+    }
+}
 
 export const API = {
     url: 'https://api.neur.io/v1/samples',

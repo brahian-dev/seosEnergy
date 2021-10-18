@@ -3,121 +3,77 @@ import GroupBar from './groupedBar'
 import Line from './Line'
 import SelectedOptions from '../SelectedOptions'
 import Error from '../Error'
-import { countryOptions, panelOptions, API } from '../../utils/dates'
-import { dashboard } from '../../utils/helper'
+import Loading from '../Loading'
+import { getPanels } from '../../utils/helper'
 
-import { useState, useEffect } from 'react'
-import { Container, Grid, Select } from "semantic-ui-react";
-import axios from 'axios'
-
+import { useState } from 'react'
+import { Container, Button, Grid, Segment, Loader } from "semantic-ui-react";
+import Panels from '../Panels'
 
 const Index = () => {
 
-    // State
     const [ company, setCompany ] = useState('')
-    const [ panel, setPanel ] = useState({})
+    const [ panels, setPanels ] = useState([])
+    const [ loading, setLoading ] = useState(false)
 
-    // Effect
-    useEffect(() => {
-        const getDates = async () => {
-            if ( company != '' && Object.keys(panel).length != 0 ) {
-                const dashboardInstance = axios.create({
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Authorization': API.token
-                    }
-                })
-                const url = dashboard(panel.key)
-                const response = await dashboardInstance.post('https://seosenergy.fredyherrera.com.co/app_movil/API/history.php', {
-                    params: {
-                        function_name: "consult_neurio_history",
-                        parameter: {
-                            sensor: "0x0000C47F510354BA",
-                            date_start: "2021-09-03",
-                            date_end: "2021-09-03",
-                            granularity: "months"
-                        }
-                    }
-                })
+    const handleClick = (e) => {
+        const value = e.target.value
 
-                console.log('Response', response);
-            }
-        }
+        setLoading(true)
 
-        getDates();
-    }, [ company, panel ])
+        setCompany(value)
 
-    // Handle Change
-    const onHandleChangeCompany = (e, { options }) => {
-        const [ content ] = options
+        const panels = getPanels(value)
 
-        setCompany(content.text)
-    }
+        setPanels(panels)
 
-    const onHandleChangePanel = (e, { options }) => {
-
-        const [ content ] = options
-
-        setPanel({
-            key: content.key,
-            text: content.text
-        })
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000);
     }
 
     return (
         <Container>
-            <Grid divided='vertically' stackable>
-                <Grid.Row columns={4}>
-                    <Grid.Column>
-                        <Select
-                            placeholder='Selecciona la Compañia'
-                            options={countryOptions}
-                            onChange={ onHandleChangeCompany }
-                        />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Select
-                            placeholder='Selecciona el Panel Solar'
-                            options={panelOptions}
-                            onChange={ onHandleChangePanel }
-                        />
-                    </Grid.Column>
-                    <Grid.Column>
-                        {
-                            company && panel.key
-                            ?
-                                <SelectedOptions
+            <Grid centered columns={2}>
+                <Grid.Column mobile={8} tablet={8} computer={4}>
+                    <Button
+                        size='massive'
+                        inverted
+                        color='green'
+                        value='neurio'
+                        onClick={ handleClick }
+                    > Neurio </Button>
+                    <Button
+                        size='massive'
+                        inverted
+                        color='blue'
+                        value='growant'
+                        onClick={ handleClick }
+                    > Growant </Button>
+                    <Button
+                        size='massive'
+                        inverted
+                        color='yellow'
+                        value='other'
+                        onClick={ handleClick }
+                    > Company </Button>
+                </Grid.Column>
+            </Grid>
+            <Grid centered columns={2}>
+                <Grid.Column>
+                    {
+                        loading ?
+                            <Loading />
+                        :
+                            panels.length > 0 ?
+                                <Panels
+                                    panels={ panels }
                                     company={ company }
-                                    panel={ panel.text }
                                 />
                             :
                             null
-                        }
-                    </Grid.Column>
-                </Grid.Row>
-                {
-                    company && panel.key
-                    ?
-                        <>
-                            <Grid.Row columns={2}>
-                                <Grid.Column>
-                                    <VerticalBar />
-                                </Grid.Column>
-                                <Grid.Column>
-                                    <GroupBar />
-                                </Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row columns={1}>
-                                <Grid.Column>
-                                    <Line />
-                                </Grid.Column>
-                            </Grid.Row>
-                        </>
-                    :
-                        <Error
-                            message="Debes seleccionar la Compañia y el Panel"
-                        />
-                }
+                    }
+                </Grid.Column>
             </Grid>
         </Container>
     );
