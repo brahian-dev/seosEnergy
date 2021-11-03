@@ -1,16 +1,14 @@
 import TopMenu from '../../components/TopMenu'
 import Panels from '../../components/Company/Panels/index'
+import { API, panelsOptions } from '../../utils/dates'
+import { firstUpperCase, dashboard } from '../../utils/helper'
 
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-const Company = ({ query, data }) => {
+const Company = ({ data }) => {
     const router = useRouter()
     const { company, panel } = router.query
-
-
-    console.log('Query', query);
-    console.log('Data', data);
 
     return (
         <>
@@ -22,16 +20,22 @@ const Company = ({ query, data }) => {
                 urlDashboard={ `/${ company }/${ panel }` }
                 disabled={ false }
             />
-            <Panels />
+            <Panels data={ data } />
         </>
     )
 }
 
 export async function getServerSideProps(context) {
-    const res = await fetch(`https://api.neur.io/v1/samples/live/last?sensorId=0x0000C47F510354BA`, {
+    const { company, panel } = context.query
+    const panelUpper = firstUpperCase(panel)
+    const panels = panelsOptions[company].panels
+    const sensor = panels.find( panel => panel.name ===  panelUpper )
+    const url = dashboard(sensor.key, company)
+
+    const res = await fetch(`${ url }`, {
         method: "get",
         headers: {
-        "Authorization": "Bearer AIOO-2n9Z_PruOa4pelsp5PZ8bvQUbJkQbV6FrFa-rjFlMbuIB3iGuTUMtLVjDSR_Iq6zq1qMO59l4AV6EWybxuNv59i8UIQrVteLLcxveorfenUGVh_mB8x5bZX7c9UDIu3XlfNvDeeC7eU0dg9IHH0hdx-3WoxvzZOPmnYFsT9-bzNk0FTz_jNZCJuF8wap5JgId8LYM-QCuBsw4Q6Lro0rRVgMtCrdezKu4Qk7pZocKloPKjMKbf_bimn-jNveG1flnHRGmYv",
+        "Authorization": API[company].token,
         "Content-Type": "application/json"
         }
     })
@@ -46,8 +50,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            data,
-            query: context.params
+            data
         }
     }
 }

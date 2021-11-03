@@ -1,31 +1,5 @@
 import { Bar } from 'react-chartjs-2';
-
-const data = {
-    labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
-    datasets: [
-        {
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-        ],
-        borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-        ],
-        borderWidth: 1,
-        },
-    ],
-};
+import { convertKwNetEnergy } from '../../../utils/helper'
 
 const options = {
     scales: {
@@ -39,13 +13,66 @@ const options = {
     },
 };
 
-const index = () => {
+const index = ({ data }) => {
+    const onRenderBarChart = (data) => {
+
+        const mondayGeneration = data[0].generationEnergy,
+            tuesdayGeneration = data[1].generationEnergy,
+            wednesdayGeneration = data[2].generationEnergy,
+            thursdayGeneration = data[3].generationEnergy,
+            fridayGeneration = data[4].generationEnergy,
+            saturdayGeneration = data[5].generationEnergy,
+            sundayGeneration = data[6].generationEnergy
+
+        const mondayConsum = data[0].consumptionEnergy,
+            tuesdayConsum = data[1].consumptionEnergy,
+            wednesdayConsum = data[2].consumptionEnergy,
+            thursdayConsum = data[3].consumptionEnergy,
+            fridayConsum = data[4].consumptionEnergy,
+            saturdayConsum = data[5].consumptionEnergy,
+            sundayConsum = data[6].consumptionEnergy
+
+        const dataGraph = {
+            labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
+            datasets: [
+                {
+                    label: 'Generacion KW',
+                    data: [
+                        convertKwNetEnergy(mondayGeneration),
+                        convertKwNetEnergy(tuesdayGeneration),
+                        convertKwNetEnergy(wednesdayGeneration),
+                        convertKwNetEnergy(thursdayGeneration),
+                        convertKwNetEnergy(fridayGeneration),
+                        convertKwNetEnergy(saturdayGeneration),
+                        convertKwNetEnergy(sundayGeneration),
+                    ],
+                    backgroundColor: '#BD574E',
+                },
+                {
+                    label: 'Consumo KW',
+                    data: [
+                        convertKwNetEnergy(mondayConsum),
+                        convertKwNetEnergy(tuesdayConsum),
+                        convertKwNetEnergy(wednesdayConsum),
+                        convertKwNetEnergy(thursdayConsum),
+                        convertKwNetEnergy(fridayConsum),
+                        convertKwNetEnergy(saturdayConsum),
+                        convertKwNetEnergy(sundayConsum),
+                    ],
+                    backgroundColor: '#FA877F',
+                },
+            ],
+        };
+
+        return dataGraph
+    }
+
     return (
         <>
             <div className='header'>
                 <h1 className='title'>Historial</h1>
             </div>
-            <Bar data={data} options={options} />
+            <Bar data={ onRenderBarChart(data) } options={options} />
         </>
     );
 }

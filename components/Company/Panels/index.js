@@ -4,21 +4,21 @@ import Line from './Line'
 
 import { Grid, Container } from "semantic-ui-react";
 
-const Index = () => {
+const Index = ({ data }) => {
     return (
         <Container>
             <Grid divided='vertically' stackable>
                 <Grid.Row columns={2}>
                     <Grid.Column>
-                        <VerticalBar />
+                        <VerticalBar data={ data } />
                     </Grid.Column>
                     <Grid.Column>
-                        <GroupBar />
+                        <GroupBar data={ data }/>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={1}>
                     <Grid.Column>
-                        <Line />
+                        <Line data={ data }/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

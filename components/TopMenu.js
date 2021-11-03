@@ -28,7 +28,7 @@ const TopMenu = ({ option, urlDashboard = '/', disabled }) => {
                 </Menu.Item>
                 <Menu.Item
                     name="Historial"
-                    redirect="/history"
+                    redirect={ `${urlDashboard}/history` }
                     active={ item === 'Historial' }
                     onClick={ onHandleClick }
                     link
@@ -39,7 +39,7 @@ const TopMenu = ({ option, urlDashboard = '/', disabled }) => {
                 </Menu.Item>
                 <Menu.Item
                     name="Energia"
-                    redirect="/energy"
+                    redirect={ `${urlDashboard}/energy` }
                     active={ item === 'Energia' }
                     onClick={ onHandleClick }
                     link
@@ -50,7 +50,7 @@ const TopMenu = ({ option, urlDashboard = '/', disabled }) => {
                 </Menu.Item>
                 <Menu.Item
                     name="Poder"
-                    redirect="/power"
+                    redirect={ `${urlDashboard}/power` }
                     active={ item === 'Poder' }
                     onClick={ onHandleClick }
                     link

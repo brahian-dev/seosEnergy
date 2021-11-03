@@ -63,9 +63,9 @@ export const panelsOptions = {
 }
 
 export const API = {
-    url: 'https://api.neur.io/v1/samples',
-    token: 'Bearer AIOO-2n9Z_PruOa4pelsp5PZ8bvQUbJkQbV6FrFa-rjFlMbuIB3iGuTUMtLVjDSR_Iq6zq1qMO59l4AV6EWybxuNv59i8UIQrVteLLcxveorfenUGVh_mB8x5bZX7c9UDIu3XlfNvDeeC7eU0dg9IHH0hdx-3WoxvzZOPmnYFsT9-bzNk0FTz_jNZCJuF8wap5JgId8LYM-QCuBsw4Q6Lro0rRVgMtCrdezKu4Qk7pZocKloPKjMKbf_bimn-jNveG1flnHRGmYv',
-    dashboard: {
-        granularity: 'months'
+    neurio: {
+        url: 'https://api.neur.io/v1/samples',
+        token: 'Bearer AIOO-2mDMnOX8DSRjn0zR9nSxWhAsUU3LL8wAG2vB9fkQ0pSS9HedT2YByx-HcqqDTSrX3DTc4poMxY_DqoxxAJgtux83LXL8uqZ3WcT6DO8YYNNXPZLWiHyLkPYWQgCuW0MQfPmX7C1qLHtOcjdxgUZSVNrpzHSA9KcC380QOJleuQ6BUkzokBby2iLjr7B8wq86yr_AYGzOkO4A-QFvv7_rO-SLHCzsR3A5LTI2LtvtIZiuSjLe81ASGtly_sls9I5dETDGg9z',
+        granularity: 'days'
     }
 }
