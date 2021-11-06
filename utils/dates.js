@@ -10,16 +10,16 @@ export const panelsOptions = {
                 key: '0x0000C47F510354BA',
                 description: 'This text will always have a left margin to make sure it sits alongside your icon'
             },
-            {
-                name: 'Other',
-                key: 'Here Key',
-                description: 'This text will always have a left margin to make sure it sits alongside your icon'
-            },
-            {
-                name: 'Other',
-                key: 'Here Key Other Panel',
-                description: 'This text will always have a left margin to make sure it sits alongside your icon'
-            }
+            // {
+            //     name: 'Other',
+            //     key: 'Here Key',
+            //     description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            // },
+            // {
+            //     name: 'Other',
+            //     key: 'Here Key Other Panel',
+            //     description: 'This text will always have a left margin to make sure it sits alongside your icon'
+            // }
         ]
     },
     growant: {
