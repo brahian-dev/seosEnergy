@@ -65,7 +65,7 @@ export const panelsOptions = {
 export const API = {
     neurio: {
         url: 'https://api.neur.io/v1/samples',
-        token: 'Bearer AIOO-2mDMnOX8DSRjn0zR9nSxWhAsUU3LL8wAG2vB9fkQ0pSS9HedT2YByx-HcqqDTSrX3DTc4poMxY_DqoxxAJgtux83LXL8uqZ3WcT6DO8YYNNXPZLWiHyLkPYWQgCuW0MQfPmX7C1qLHtOcjdxgUZSVNrpzHSA9KcC380QOJleuQ6BUkzokBby2iLjr7B8wq86yr_AYGzOkO4A-QFvv7_rO-SLHCzsR3A5LTI2LtvtIZiuSjLe81ASGtly_sls9I5dETDGg9z',
+        token: 'Bearer AIOO-2k0fHBfdMch0buY5c5zpj2ibC4YWuIpsud-L4wRYkqwAuxJzJ2JsjC1k1STbcnSoJ5OsuWaPyL50Uj2PPu3VbNVJaqzK1XRtv0DOFxolJmuDfnqEh2p2oSpI0MVwZro3Lmu7iwMzHk2bSy94NrfLEtJ7Qy-yN4TP4X2i02Jwaia5cJjPWllEfwqet2No-bkqeT30nzSM0vtY7HjWRMi4tcwEfdxz-sElDmF42g3bQy_a8QfmCVV7u-TPuShWAlReufPBd1f',
         granularity: 'days'
     }
 }
