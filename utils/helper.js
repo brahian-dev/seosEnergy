@@ -10,6 +10,30 @@ export const dashboard = (sensor, company) => {
     return url
 }
 
+export const getToken = async (company) => {
+    let url = ''
+    switch (company) {
+        case 'neurio':
+            url = `${ API[company].token.url }`
+        break;
+    }
+
+    const token = await fetch(url,
+        {
+            method: 'POST',
+            body: new URLSearchParams({
+                'grant_type': API[company].token.grant_type,
+                'client_id': API[company].token.client_id,
+                'client_secret': API[company].token.client_secret
+            })
+        }
+    );
+    
+    const data = await token.json()
+
+    return `${ data.token_type } ${ data.access_token }`
+}
+
 export const getPanels = (company) => {
     const panel = panelsOptions[company].panels
 

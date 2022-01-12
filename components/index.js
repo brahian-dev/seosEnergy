@@ -49,9 +49,9 @@ const Index = () => {
                         size='massive'
                         inverted
                         color='yellow'
-                        value='other'
+                        value='emporia'
                         onClick={ handleClick }
-                    > Company </Button>
+                    > Emporia </Button>
                 </Grid.Column>
             </Grid>
             <Grid centered columns={2}>

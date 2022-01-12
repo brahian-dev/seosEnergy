@@ -3,7 +3,7 @@ import VerticalBar from '../../../components/Company/Panels/verticalBar'
 import GroupBar from '../../../components/Company/Panels/groupedBar'
 import Line from '../../../components/Company/Panels/Line'
 import { API, panelsOptions } from '../../../utils/dates'
-import { firstUpperCase, dashboard } from '../../../utils/helper'
+import { firstUpperCase, dashboard, getToken } from '../../../utils/helper'
 
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -64,11 +64,12 @@ export async function getServerSideProps(context) {
     const panels = panelsOptions[company].panels
     const sensor = panels.find( panel => panel.name ===  panelUpper )
     const url = dashboard(sensor.key, company)
+    const token = await getToken(company)
 
     const res = await fetch(`${ url }`, {
         method: "get",
         headers: {
-        "Authorization": API[company].token,
+        "Authorization": token,
         "Content-Type": "application/json"
         }
     })
