@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Image from 'next/image'
+import Logo from '../public/SeosLogo.jpeg'
 import { Icon, Menu } from 'semantic-ui-react'
 
 const TopMenu = ({ option, urlDashboard = '/', disabled }) => {
@@ -16,6 +18,10 @@ const TopMenu = ({ option, urlDashboard = '/', disabled }) => {
     return (
         <>
             <Menu pointing secondary>
+                {/* Logo in Size incorrect */}
+                {/* <Menu.Item>
+                    <Image alt="Logo" src={ Logo } />
+                </Menu.Item> */}
                 <Menu.Item
                     name="Dashboard"
                     redirect={ urlDashboard }

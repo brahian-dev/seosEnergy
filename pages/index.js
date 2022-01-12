@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import TopMenu from '../components/TopMenu'
 import Content from '../components/index'
+import Wave from '../components/Wave/index'
 
 const Index = ({ data }) => {
 
@@ -14,6 +15,7 @@ const Index = ({ data }) => {
         disabled={ true }
       />
       <Content />
+      <Wave />
     </>
   );
 }
