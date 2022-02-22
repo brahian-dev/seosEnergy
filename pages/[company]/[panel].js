@@ -1,7 +1,7 @@
 import TopMenu from '../../components/TopMenu'
 import Panels from '../../components/Company/Panels/index'
 import { API, panelsOptions } from '../../utils/dates'
-import { firstUpperCase, dashboard, getToken} from '../../utils/helper'
+import { firstUpperCase, dashboard, getToken, getDates } from '../../utils/helper'
 
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -20,28 +20,18 @@ const Company = ({ data }) => {
                 urlDashboard={ `/${ company }/${ panel }` }
                 disabled={ false }
             />
-            <Panels data={ data } />
+            <Panels data={ data } company={ company } />
         </>
     )
 }
 
 export async function getServerSideProps(context) {
     const { company, panel } = context.query
-    const panelUpper = firstUpperCase(panel)
     const panels = panelsOptions[company].panels
-    const sensor = panels.find( panel => panel.name ===  panelUpper )
+    const sensor = panels.find( item => item.nameRedirect ===  panel )
     const url = dashboard(sensor.key, company)
     const token = await getToken(company)
-
-    const res = await fetch(`${ url }`, {
-        method: "get",
-        headers: {
-        "Authorization": token,
-        "Content-Type": "application/json"
-        }
-    })
-
-    const data = await res.json()
+    const data = await getDates(company, token, url)
 
     if (!data) {
         return {

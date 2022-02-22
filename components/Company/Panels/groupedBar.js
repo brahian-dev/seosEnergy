@@ -17,29 +17,29 @@ const options = {
 const index = ({ data }) => {
     const onRenderGroupedChart = (data) => {
 
-        const mondayGeneration = data[0].generationPower,
-            tuesdayGeneration = data[1].generationPower,
-            wednesdayGeneration = data[2].generationPower,
-            thursdayGeneration = data[3].generationPower,
-            fridayGeneration = data[4].generationPower,
-            saturdayGeneration = data[5].generationPower,
-            sundayGeneration = data[6].generationPower
+        const mondayGeneration = data[0]?.generationPower,
+            tuesdayGeneration = data[1]?.generationPower,
+            wednesdayGeneration = data[2]?.generationPower,
+            thursdayGeneration = data[3]?.generationPower,
+            fridayGeneration = data[4]?.generationPower,
+            saturdayGeneration = data[5]?.generationPower,
+            sundayGeneration = data[6]?.generationPower
 
-        const mondayConsum = data[0].consumptionPower,
-            tuesdayConsum = data[1].consumptionPower,
-            wednesdayConsum = data[2].consumptionPower,
-            thursdayConsum = data[3].consumptionPower,
-            fridayConsum = data[4].consumptionPower,
-            saturdayConsum = data[5].consumptionPower,
-            sundayConsum = data[6].consumptionPower
+        const mondayConsum = data[0]?.consumptionPower,
+            tuesdayConsum = data[1]?.consumptionPower,
+            wednesdayConsum = data[2]?.consumptionPower,
+            thursdayConsum = data[3]?.consumptionPower,
+            fridayConsum = data[4]?.consumptionPower,
+            saturdayConsum = data[5]?.consumptionPower,
+            sundayConsum = data[6]?.consumptionPower
 
-        const mondayPower = data[0].netPower,
-            tuesdayPower = data[1].netPower,
-            wednesdayPower = data[2].netPower,
-            thursdayPower = data[3].netPower,
-            fridayPower = data[4].netPower,
-            saturdayPower = data[5].netPower,
-            sundayPower = data[6].netPower
+        const mondayPower = data[0]?.netPower,
+            tuesdayPower = data[1]?.netPower,
+            wednesdayPower = data[2]?.netPower,
+            thursdayPower = data[3]?.netPower,
+            fridayPower = data[4]?.netPower,
+            saturdayPower = data[5]?.netPower,
+            sundayPower = data[6]?.netPower
 
         const dataGraph = {
             labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],

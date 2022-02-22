@@ -7,7 +7,7 @@ const Panels = ({ panels, company }) => {
             <List>
                 {
                     panels.map((item) => (
-                        <Link key={ item.key } href={ `/${ company }/${ item.name.toLowerCase() }` } passHref>
+                        <Link key={ item.key } href={ `/${ company }/${ item.nameRedirect.toLowerCase() }` } passHref>
                             <List.Item as='a'>
                                 <Icon name='battery full' />
                                 <List.Content>

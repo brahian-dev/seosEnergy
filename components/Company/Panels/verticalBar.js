@@ -13,24 +13,23 @@ const options = {
     },
 };
 
-const index = ({ data }) => {
+const index = ({ data, company }) => {
     const onRenderBarChart = (data) => {
+        const mondayGeneration = data[0]?.generationEnergy,
+            tuesdayGeneration = data[1]?.generationEnergy,
+            wednesdayGeneration = data[2]?.generationEnergy,
+            thursdayGeneration = data[3]?.generationEnergy,
+            fridayGeneration = data[4]?.generationEnergy,
+            saturdayGeneration = data[5]?.generationEnergy,
+            sundayGeneration = data[6]?.generationEnergy
 
-        const mondayGeneration = data[0].generationEnergy,
-            tuesdayGeneration = data[1].generationEnergy,
-            wednesdayGeneration = data[2].generationEnergy,
-            thursdayGeneration = data[3].generationEnergy,
-            fridayGeneration = data[4].generationEnergy,
-            saturdayGeneration = data[5].generationEnergy,
-            sundayGeneration = data[6].generationEnergy
-
-        const mondayConsum = data[0].consumptionEnergy,
-            tuesdayConsum = data[1].consumptionEnergy,
-            wednesdayConsum = data[2].consumptionEnergy,
-            thursdayConsum = data[3].consumptionEnergy,
-            fridayConsum = data[4].consumptionEnergy,
-            saturdayConsum = data[5].consumptionEnergy,
-            sundayConsum = data[6].consumptionEnergy
+        const mondayConsum = data[0]?.consumptionEnergy,
+            tuesdayConsum = data[1]?.consumptionEnergy,
+            wednesdayConsum = data[2]?.consumptionEnergy,
+            thursdayConsum = data[3]?.consumptionEnergy,
+            fridayConsum = data[4]?.consumptionEnergy,
+            saturdayConsum = data[5]?.consumptionEnergy,
+            sundayConsum = data[6]?.consumptionEnergy
 
         const dataGraph = {
             labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
